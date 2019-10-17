@@ -1,0 +1,17 @@
+syntax = "proto3";
+option java_package = "com.library.proto";
+
+service Library{
+	rpc addBook(BookRequest) returns (BookResponse);
+}
+
+message BookRequest{
+	string name = 1;
+	string sin = 2;
+	int32 id = 3;
+}
+
+message BookResponse{
+	string message = 1;
+	int32 code = 2;
+}

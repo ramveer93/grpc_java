@@ -1,0 +1,41 @@
+syntax = "proto3";
+
+option java_package = "com.employee.proto";
+
+service Employee{
+
+	rpc addEmployee(EmployeeRequest) returns (EmployeeResponse);
+	rpc getEmployees(EmployeeRequest) returns (EmployeesList);
+
+}
+
+enum EmployeeDepartment{
+	ADMIN = 0;
+	DEVELOPMENT = 1;
+	QA =2;
+	TRANSPORT = 3;
+}
+message EmployeeRequest{
+	string employeeName = 1;
+	int32 employeeId = 2;
+	EmployeeDepartment employeeDepartment = 3;
+	repeated string languages = 4;
+	string address = 5;
+}
+
+message EmployeeResponse{
+	string message = 1;
+	int32 statusCode = 2;
+	EmployeeRequest employee = 3;
+
+}
+
+message EmployeesList{
+	repeated EmployeeRequest employeeRequest = 1;
+
+}
+
+
+
+
+

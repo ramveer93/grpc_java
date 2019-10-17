@@ -1,0 +1,56 @@
+syntax = "proto3" ;
+//import "google/protobuf/timestamp.proto";
+
+option java_package = "proto";
+
+//import "google/protobuf/timestamp.proto";
+
+
+service user{
+  rpc login(LoginRequest) returns (APIResponse);
+  rpc logout(Empty) returns (APIResponse);
+}
+
+message LoginRequest{
+	string username = 1;
+	string password = 2;
+
+}
+
+message APIResponse{
+	string responsemessage = 1;
+	int32 responseCode = 2;
+
+}
+
+message Empty{
+
+}
+
+
+//service patient{
+//	rpc getPatientDetails(PatientRequest) returns (PatientResponse);
+//}
+//enum Gender{
+//	MALE=0;
+//	FEMALE=1;
+//}
+//
+//
+//
+//message PatientRequest{
+//	string resourceType = 1;
+//	int32 identifier = 2;
+//	bool active = 3;
+//	Gender gender = 4;
+//
+////	google_protobuf.Timestamp modifiedTime = 5;
+//
+//
+//}
+//
+//
+//
+//message PatientResponse{
+//
+//}

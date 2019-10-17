@@ -1,0 +1,73 @@
+syntax = "proto3";
+
+option java_package = "patientProto";
+
+service PatientService{
+	rpc getPatient(PatientRequest) returns (PatientResponse);
+	rpc addPatient(Patient) returns (AddDeletePatientResponse);
+	rpc deletePatient(Patient) returns (AddDeletePatientResponse);
+	rpc getAllPatients(EmptyResponse) returns (PatientResponse);
+}
+
+message PatientRequest{
+	int32 identifier = 1;
+	string name = 2;
+}
+
+
+message PatientResponse{
+ repeated Patient patient = 1;
+
+}
+enum Gender{
+	MALE = 0;
+	FEMALE = 1;
+}
+enum MaritalStatus{
+	MARRIED = 0;
+	UNMERRIED = 1;
+}
+
+message Patient{
+	int32 identifier = 1;
+	string name = 2;
+	Gender gender = 3;
+	bool active = 4;
+	string address = 5;
+	MaritalStatus maritalStatus = 6;
+    string link = 7;
+    repeated string language = 8;
+    repeated Provider careProvider = 9;
+    string managingOrganization = 10;
+    repeated Contact guardian = 11;
+}
+
+message Provider{
+	string name = 1;
+	int32 identifier = 2;
+	int32 tin = 3;
+
+}
+
+message Contact{
+	string name = 1;
+	string relationWithPatient = 2;
+	string cotactDetails = 3;
+}
+
+message AddDeletePatientResponse{
+	string successMessage = 1;
+	string errorMessage = 2;
+	int32 statusCode = 3;
+
+}
+
+message EmptyResponse{
+
+}
+
+message ProtoVsJson{
+	string status = 1;
+	string message  = 2;
+}
+
