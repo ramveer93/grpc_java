@@ -4,7 +4,7 @@ grpc with java server
 This is java implementation of the grpc server, It has services defined in resource/proto files based on that client side code will 
 be generated
 
-##Steps to build the project 
+## Steps to build the project 
 
  -clone the project and import as maven project in eclipse or intelij
  ```mvn clean install```
